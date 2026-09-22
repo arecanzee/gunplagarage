@@ -2,19 +2,25 @@
 <head>
     <title> sumber - gunpla garage </title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;700;800&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         body {
-            background-color: #F0D8C3;
+            background-color: #10151A;
             font-family: 'Poppins', Arial, Helvetica, sans-serif;
             margin: 0;
             padding: 40px 20px;
-            color: #2B3537;
+            color: #E8E6E1;
+            animation: fadeInBody 0.5s ease;
         }
 
         h1 {
-            font-family: 'Playfair Display', serif;
-            color: #B0323A;
+            font-family: 'Orbitron', sans-serif; letter-spacing: 0.5px;
+            color: #2FE0C0;
+        }
+
+        @keyframes fadeInBody {
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
 
         ul {
@@ -22,13 +28,14 @@
         }
 
         a {
-            color: #C87C0C;
+            color: #2FE0C0;
             text-decoration: none;
             font-weight: 600;
+            transition: color 0.2s ease;
         }
 
         a:hover {
-            color: #B0323A;
+            color: #1FAF95;
             text-decoration: underline;
         }
 

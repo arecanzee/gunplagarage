@@ -1,0 +1,334 @@
+<html>
+<head>
+    <title> pre order - gunpla garage </title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;700;800&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background-color: #10151A;
+            font-family: 'Poppins', Arial, Helvetica, sans-serif;
+            margin: 0;
+            color: #E8E6E1;
+            animation: fadeInBody 0.5s ease;
+        }
+
+        @keyframes fadeInBody {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .navbar {
+            background-color: #1B2328;
+            padding: 12px 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 40px;
+        }
+
+        .navbar a {
+            position: relative;
+            color: #E8E6E1;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.2s ease;
+            padding-bottom: 4px;
+        }
+
+        .navbar a::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 0;
+            height: 2px;
+            background-color: #2FE0C0;
+            transition: width 0.25s ease;
+        }
+
+        .navbar a:hover::after {
+            width: 100%;
+        }
+
+        .navbar a:hover {
+            color: #2FE0C0;
+        }
+
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-content {
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%) translateY(-8px);
+            background-color: #232D33;
+            min-width: 160px;
+            padding: 10px;
+            z-index: 1;
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+            border-radius: 12px;
+            border: 1px solid #2FE0C033;
+            transition: opacity 0.25s ease, transform 0.25s ease, visibility 0.25s;
+        }
+
+        .dropdown-content.show {
+            opacity: 1;
+            visibility: visible;
+            pointer-events: auto;
+            transform: translateX(-50%) translateY(0);
+        }
+
+        .dropdown-content a {
+            display: block;
+            padding: 6px 4px;
+            color: #E8E6E1;
+            opacity: 0;
+            transform: translateX(-6px);
+            transition: opacity 0.2s ease, transform 0.2s ease, color 0.15s ease;
+        }
+
+        .dropdown-content.show a {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .dropdown-content a:nth-child(1) { transition-delay: 0.03s; }
+        .dropdown-content a:nth-child(2) { transition-delay: 0.07s; }
+        .dropdown-content a:nth-child(3) { transition-delay: 0.11s; }
+        .dropdown-content a:nth-child(4) { transition-delay: 0.15s; }
+
+        .dropdown-content a:hover {
+            color: #2FE0C0;
+        }
+
+        footer {
+            background-color: #1B2328;
+            color: #E8E6E1;
+            text-align: center;
+            padding: 15px;
+            margin-top: 20px;
+        }
+
+        .preorder {
+            max-width: 700px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .preorder h2 {
+            font-family: 'Orbitron', sans-serif; letter-spacing: 0.5px;
+            color: #2FE0C0;
+            text-align: center;
+        }
+
+        .preorder > p {
+            text-align: center;
+            color: #A9B4B8;
+        }
+
+        .preorder-box {
+            background-color: #1B2328;
+            border: 1px solid #2A3439;
+            border-radius: 16px;
+            padding: 20px;
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .preorder-preview {
+            flex: 1;
+            min-width: 220px;
+        }
+
+        .preorder-preview img {
+            width: 100%;
+            height: 240px;
+            object-fit: cover;
+            border-radius: 12px;
+            transition: opacity 0.2s ease;
+        }
+
+        .preorder-preview p {
+            text-align: center;
+            font-weight: 700;
+            margin-top: 10px;
+            color: #2FE0C0;
+        }
+
+        .preorder-form {
+            flex: 1;
+            min-width: 220px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .preorder-form label {
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: #E8E6E1;
+        }
+
+        .preorder-form select,
+        .preorder-form input,
+        .preorder-form textarea {
+            padding: 8px 10px;
+            border: 1px solid #2A3439;
+            border-radius: 10px;
+            font-family: 'Poppins', sans-serif;
+            outline: none;
+            transition: border-color 0.2s ease;
+            background-color: #232D33;
+            color: #E8E6E1;
+        }
+
+        .preorder-form select:focus,
+        .preorder-form input:focus,
+        .preorder-form textarea:focus {
+            border-color: #2FE0C0;
+        }
+
+        .preorder-form button {
+            background-color: #2FE0C0;
+            color: #10151A;
+            border: none;
+            border-radius: 20px;
+            padding: 10px;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 6px;
+            transition: background-color 0.2s ease, transform 0.2s ease;
+        }
+
+        .preorder-form button:hover {
+            background-color: #1FAF95;
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="navbar">
+        <a href="index2.html">Home</a>
+
+        <div class="dropdown">
+            <a href="#">Perfect Grade</a>
+            <div class="dropdown-content">
+                <a href="produk-phenex.html">Phenex</a>
+                <a href="produk-banshee-norn.html">Banshee Norn</a>
+                <a href="produk-full-armor.html">Full Armour</a>
+                <a href="produk-destroy-mode.html">Destroy Mode</a>
+            </div>
+        </div>
+
+        <a href="preorder.html">Pre Order</a>
+    </div>
+
+    <section class="preorder">
+        <h2>Pre-Order</h2>
+        <p>Pilih produk yang mau di pre-order.</p>
+
+        <div class="preorder-box">
+            <div class="preorder-preview">
+                <img id="preorder-gif" src="phenex.gif">
+                <p id="preorder-harga">Rp 13.706.000</p>
+            </div>
+
+            <form class="preorder-form" id="preorder-form">
+                <label for="produk-pilih">Pilih Produk</label>
+                <select id="produk-pilih">
+                    <option value="phenex.gif" data-harga="Rp 13.706.000">Unicorn Gundam Phenex</option>
+                    <option value="destroy-mode.gif" data-harga="Rp 4.290.000">Unicorn Gundam Destroy Mode</option>
+                    <option value="banshee norn.gif" data-harga="Rp 9.212.000">Unicorn Gundam 02 Banshee Norn</option>
+                    <option value="full-armor.gif" data-harga="Rp 12.261.000">Unicorn Gundam Full Armor</option>
+                </select>
+
+                <label for="nama-pemesan">Nama</label>
+                <input type="text" id="nama-pemesan" placeholder="nama kamu" required>
+
+                <label for="jumlah-pesan">Jumlah</label>
+                <input type="number" id="jumlah-pesan" min="1" value="1">
+
+                <label for="catatan-pesan">Catatan (opsional)</label>
+                <textarea id="catatan-pesan" rows="3" placeholder="ada request warna/varian dll"></textarea>
+
+                <button type="submit">Kirim Pre-Order</button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <p>copyright gunpla garage 2026</p>
+        <p><a href="sumber.html" style="color: #2FE0C0;">Sumber</a></p>
+    </footer>
+
+    <script>
+        var dropdowns = document.querySelectorAll('.dropdown');
+
+        dropdowns.forEach(function (drop) {
+            var content = drop.querySelector('.dropdown-content');
+            var closeTimer;
+
+            drop.addEventListener('mouseenter', function () {
+                clearTimeout(closeTimer);
+                content.classList.add('show');
+            });
+
+            drop.addEventListener('mouseleave', function () {
+                closeTimer = setTimeout(function () {
+                    content.classList.remove('show');
+                }, 250);
+            });
+        });
+
+        var produkPilih = document.getElementById('produk-pilih');
+        var preorderGif = document.getElementById('preorder-gif');
+        var preorderHarga = document.getElementById('preorder-harga');
+
+        function updatePreorderPreview() {
+            var selected = produkPilih.options[produkPilih.selectedIndex];
+
+            preorderGif.style.opacity = 0;
+
+            setTimeout(function () {
+                preorderGif.src = selected.value;
+                preorderHarga.textContent = selected.getAttribute('data-harga');
+                preorderGif.style.opacity = 1;
+            }, 200);
+        }
+
+        // kalo dateng dari halaman detail produk (?produk=namafile.gif), otomatis pilih itu
+        var params = new URLSearchParams(window.location.search);
+        var produkDariUrl = params.get('produk');
+
+        if (produkDariUrl) {
+            for (var i = 0; i < produkPilih.options.length; i++) {
+                if (produkPilih.options[i].value === produkDariUrl) {
+                    produkPilih.selectedIndex = i;
+                    break;
+                }
+            }
+        }
+
+        updatePreorderPreview();
+
+        produkPilih.addEventListener('change', updatePreorderPreview);
+
+        document.getElementById('preorder-form').addEventListener('submit', function (e) {
+            e.preventDefault();
+            var namaProduk = produkPilih.options[produkPilih.selectedIndex].text;
+            var nama = document.getElementById('nama-pemesan').value;
+            alert('Pre-order berhasil! ' + nama + ', pesenan ' + namaProduk + ' bakal segera diproses.');
+            this.reset();
+            updatePreorderPreview();
+        });
+    </script>
+
+</body>
+</html>
